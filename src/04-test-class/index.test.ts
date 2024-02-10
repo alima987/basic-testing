@@ -3,6 +3,7 @@ import {
   SynchronizationFailedError,
   InsufficientFundsError,
   TransferFailedError,
+  getBankAccount,
 } from '.';
 
 describe('BankAccount', () => {
@@ -52,8 +53,10 @@ describe('BankAccount', () => {
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
+    const account = getBankAccount(100);
     const balance = await account.fetchBalance();
     expect(typeof balance).toBe('number');
+    
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
